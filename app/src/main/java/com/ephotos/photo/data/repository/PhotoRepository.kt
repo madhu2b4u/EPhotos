@@ -6,6 +6,9 @@ import com.ephotos.photo.data.remote.models.PhotoResponse
 
 
 interface PhotoRepository {
-    suspend fun getPhotoInfo(id: String): LiveData<Result<PhotoResponse>>
+    suspend fun getPhotoInfo(
+        id: String,
+        mustFetchFromNetwork: Boolean
+    ): LiveData<Result<PhotoResponse>>
 
 }

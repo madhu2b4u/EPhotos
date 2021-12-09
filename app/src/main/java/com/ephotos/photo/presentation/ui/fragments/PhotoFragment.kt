@@ -11,11 +11,14 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.ephotos.R
 import com.ephotos.common.BaseFragment
+import com.ephotos.common.isNetworkConnected
 import com.ephotos.common.noCrash
 import com.ephotos.photo.data.remote.models.PhotoResponse
 import com.ephotos.photo.presentation.viewmodel.PhotoViewModel
+import com.ephotos.snackbar.showSnackbar
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.android.synthetic.main.fragment_photo.*
+
 
 @AndroidEntryPoint
 class PhotoFragment : BaseFragment() {
@@ -32,19 +35,26 @@ class PhotoFragment : BaseFragment() {
             noCrash {
                 setupListeners()
                 observeOnViewModel()
+                viewModel.getPhotoInfo("", false)
             }
         }
     }
 
+
     private fun setupListeners() {
         btnGetPhoto.setOnClickListener {
-            fetchRandomPhoto()
+            if (isNetworkConnected) {
+                fetchRandomPhoto()
+            } else {
+                viewModel.showNetworkErrorSnackBar()
+            }
         }
     }
 
     private fun fetchRandomPhoto() {
-        val randomId = (0..1000).random() // generated random from 0 to 1000 included
-        viewModel.getPhotoInfo(randomId.toString())
+        // generated random from 0 to 1000 included
+        val randomId = (0..1000).random()
+        viewModel.getPhotoInfo(randomId.toString(), true)
     }
 
     private fun observeOnViewModel() = with(viewModel) {
@@ -52,6 +62,10 @@ class PhotoFragment : BaseFragment() {
 
         photoResult.observe(viewLifecycleOwner, {
             showResults(it)
+        })
+
+        showSnackbar.observe(viewLifecycleOwner, {
+            it?.let { view?.showSnackbar(it) }
         })
     }
 
@@ -67,5 +81,6 @@ class PhotoFragment : BaseFragment() {
             .apply(RequestOptions.bitmapTransform(RoundedCorners(8)))
             .into(photoView)
     }
+
 
 }

@@ -1,10 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Picsum Photo</string>
     <string name="noImage">Image does not exist</string>
     <string name="noNetwork">No network connectivity</string>
     <string name="somethingWentWrong">Something went wrong</string>
     <string name="dismiss">Dismiss</string>
-    <string name="network_error_message">Poor network connection.Please check your connectivity</string>
     <string name="ok_text">OK</string>
-
+    <string name="network_error_message">Poor network connection.Please check your connectivity</string>
 </resources>
