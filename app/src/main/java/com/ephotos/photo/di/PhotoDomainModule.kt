@@ -4,6 +4,8 @@ import com.ephotos.photo.data.repository.PhotoRepository
 import com.ephotos.photo.data.repository.PhotoRepositoryImpl
 import com.ephotos.photo.domain.PhotoUseCase
 import com.ephotos.photo.domain.PhotoUseCaseImpl
+import com.ephotos.snackbar.SnackbarEvents
+import com.ephotos.snackbar.SnackbarEventsProvider
 import dagger.Binds
 import dagger.Module
 import dagger.hilt.InstallIn
@@ -22,4 +24,9 @@ abstract class PhotoDomainModule {
     abstract fun bindsPhotoUseCase(
         mPhotoUseCase: PhotoUseCaseImpl
     ): PhotoUseCase
+
+    @Binds
+    abstract fun bindsSnackBarEvent(
+        snackBarEvent: SnackbarEventsProvider
+    ): SnackbarEvents
 }
