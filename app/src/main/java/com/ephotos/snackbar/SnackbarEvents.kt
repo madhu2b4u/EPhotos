@@ -3,7 +3,6 @@ package com.ephotos.snackbar
 import androidx.annotation.AnyThread
 import androidx.lifecycle.LiveData
 import com.ephotos.common.SingleLiveEvent
-import dagger.Provides
 import javax.inject.Singleton
 
 interface SnackbarEvents {

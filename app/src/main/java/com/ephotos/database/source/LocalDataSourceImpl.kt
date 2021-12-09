@@ -20,7 +20,7 @@ class LocalDataSourceImpl @Inject constructor(
     }
 
 
-    override suspend fun getPhoto()= withContext(context) {
+    override suspend fun getPhoto() = withContext(context) {
         val photoEntity = pulkaDao.getPhotoFromDatabase()
         if (photoEntity != null)
             photoMapper.to(photoEntity)

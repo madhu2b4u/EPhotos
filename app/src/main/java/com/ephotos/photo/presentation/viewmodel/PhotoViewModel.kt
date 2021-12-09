@@ -48,7 +48,7 @@ class PhotoViewModel @Inject constructor(
     }
 
     private fun handleError(errorCode: String?) {
-        when(errorCode){
+        when (errorCode) {
             "404" -> showErrorDuringFetchingData(R.string.noImage)
             "400" -> showNetworkErrorSnackBar()
             else -> showErrorDuringFetchingData(R.string.somethingWentWrong)

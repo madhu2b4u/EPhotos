@@ -10,7 +10,9 @@ import com.bumptech.glide.load.engine.DiskCacheStrategy
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import com.ephotos.R
-import com.ephotos.common.*
+import com.ephotos.common.BaseFragment
+import com.ephotos.common.isNetworkConnected
+import com.ephotos.common.noCrash
 import com.ephotos.photo.data.remote.models.PhotoResponse
 import com.ephotos.photo.presentation.viewmodel.PhotoViewModel
 import com.ephotos.snackbar.showSnackbar
@@ -41,9 +43,9 @@ class PhotoFragment : BaseFragment() {
 
     private fun setupListeners() {
         btnGetPhoto.setOnClickListener {
-            if(isNetworkConnected){
+            if (isNetworkConnected) {
                 fetchRandomPhoto()
-            }else{
+            } else {
                 viewModel.showNetworkErrorSnackBar()
             }
         }
@@ -79,7 +81,6 @@ class PhotoFragment : BaseFragment() {
             .apply(RequestOptions.bitmapTransform(RoundedCorners(8)))
             .into(photoView)
     }
-
 
 
 }

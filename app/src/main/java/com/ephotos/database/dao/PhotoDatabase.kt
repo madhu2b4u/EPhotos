@@ -5,7 +5,7 @@ import androidx.annotation.NonNull
 import androidx.room.Database
 import androidx.room.Room
 import androidx.room.RoomDatabase
-import com.pulka.database.entites.*
+import com.pulka.database.entites.DbPhoto
 
 @Database(
     entities = [DbPhoto::class],
