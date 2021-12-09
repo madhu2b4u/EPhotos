@@ -6,4 +6,6 @@ import javax.inject.Singleton
 
 @Singleton
 class PhotoUseCaseImpl @Inject constructor(private val mPhotoRepository: PhotoRepository) :
-    PhotoUseCase
+    PhotoUseCase {
+    override suspend fun getPhotoInfo(id: String) = mPhotoRepository.getPhotoInfo(id)
+}
