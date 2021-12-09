@@ -7,6 +7,7 @@ import android.net.ConnectivityManager
 import android.net.NetworkCapabilities
 import android.os.Build
 import android.util.Log
+import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import kotlin.math.roundToInt
@@ -41,6 +42,19 @@ fun noCrash(enableLog: Boolean = true, func: () -> Unit): String? {
             e.printStackTrace()
         e.message
     }
+}
+
+
+fun View.show() {
+    this.visibility = View.VISIBLE
+}
+
+fun View.hide() {
+    this.visibility = View.GONE
+}
+
+fun View.invisible() {
+    this.visibility = View.INVISIBLE
 }
 
 val Fragment.isNetworkConnected: Boolean
